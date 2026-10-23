@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AboutUs from './AboutUs.jsx';
+import ProductList from './ProductList.jsx';
 import './App.css';
 
 function App() {
@@ -8,6 +9,11 @@ function App() {
 
   const handleGetStartedClick = () => {
     setShowProductList(true);
+  };
+
+  // Passed down to ProductList so the navbar's Home link can come back here
+  const handleHomeClick = () => {
+    setShowProductList(false);
   };
 
   return (
@@ -31,10 +37,7 @@ function App() {
           <AboutUs />
         </>
       ) : (
-        <div>
-          {/* Temporary placeholder. We'll replace this with <ProductList /> soon */}
-          <h2>Plants page coming soon</h2>
-        </div>
+        <ProductList onHomeClick={handleHomeClick} />
       )}
     </div>
   );
